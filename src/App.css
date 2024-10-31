@@ -3,17 +3,46 @@
     margin: 0;
     box-sizing: border-box;
 }
+.contenedorTitulo {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+.tituloPrincipal, .subTituloPrincipal {
+  min-width: 80px;
+  color: black;
+  background-color:rgba(26, 122, 26, 0.662);;
+  border-radius: 10px;
+}
 
-.navContainer{
-    width: 100%;
-    padding:2rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: red;
-  }
-  .aLink{
-    color:white;
-    font-weight: 500;
-    text-decoration: none;
-  }
+.nav-wrapper {
+  background-color:rgba(26, 122, 26, 0.662);
+}
+.cartWidgetContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartIcon{
+  width:2rem;
+}
+
+.cartCounter{
+  color:red;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.card .card-image .card-title {
+  position: relative;
+}
+
+.card-image img {
+  max-width: auto;
+}
+.productosVenta {
+  display: flex;
+}

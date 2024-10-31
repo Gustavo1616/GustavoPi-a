@@ -1,13 +1,19 @@
-import CartWidget from './CartWidget'
+import CartWidget from "./CartWidget"
+
 const NavbarComponent = () =>{
     return(
-        <nav className="navContainer">
-            <a className='aLink'>Coder Shop</a>
-            <a className='aLink'>Nuevos Ingresos</a>
-            <a className='aLink'>Ofertas</a>
-            <a className='aLink'>Más vendidos</a>
-            <CartWidget counter={15} />
-        </nav>
+        <nav>
+        <div className="nav-wrapper">
+          <a href="#" className="brand-logo">Logo</a>
+          <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <li><a href="sass.html">Ofertas</a></li>
+            <li><a href="badges.html">Nuevos Ingresos</a></li>
+            <li><a href="collapsible.html">Más vendidos</a></li>
+            <CartWidget counter={15}/>
+          </ul>
+        </div>
+      </nav>
     )
 }
+
 export default NavbarComponent

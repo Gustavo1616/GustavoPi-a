@@ -1,21 +1,22 @@
 import './App.css'
 import NavbarComponent from './components/Navbarcomponent'
 import ItemListContainer from './components/ItemListContainer'
-import Cards from './components/cards'
+import ItemDetailContainer from './components/ItemDetailContainer'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
+
 function App() {
   return (
-  <div>
-    <NavbarComponent/>
-    <ItemListContainer greeting='Bienvenidos a la tienda de Sgto Morrison' texto='Tienda Tactica'/>
-    <div className='productosVenta'>
-      <Cards src='public/products/botas.png' tittle='botas' />
-      <Cards src='public/products/chaleco.png' tittle='Chaleco'/>
-      <Cards src='public/products/cinturon.png' tittle='Cinturon'/>
-      <Cards src='public/products/guantes.png' tittle='Guantes'/>
-      <Cards src='public/products/casco.png' tittle='Casco'/>
-      <Cards src='public/products/pantalon.png' tittle='Pantalon'/>
-    </div>
-  </div>
+  <BrowserRouter>
+   <NavbarComponent/>
+    <Routes>
+      <Route path='/' element={<ItemListContainer greeting='Bienvenidos a la tienda de Sgto Morrison' texto='Tienda Tactica'/>}/>
+      <Route path='/productos/:categorias' element={<ItemListContainer greeting='Bienvenidos a la categoria:'/>}/>
+      <Route path='/item/:id' element={<ItemDetailContainer/>}/>
+    </Routes>
+
+
+   
+  </BrowserRouter>
   )
 }
 

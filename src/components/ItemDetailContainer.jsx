@@ -11,15 +11,15 @@ const ItemDetailContainer = () => {
   console.log(id)
   useEffect (()=>{
     setLoading(true)
-    getOneProducto('1')
+    getOneProducto(id)
     .then((res)=> setProducto(res))
     .catch((error)=>console.log(error))
     .finally(()=> setLoading(false))
   },[])
 
   return (
-    <div>
-      {loading ? <h2 className='animate__animated animate__zoomIn'>Cargando...</h2>: <ItemDetail producto={producto}/>}
+    <div className='contenedorDetalle'>
+      {loading ? <h2 className='animate__animated animate__zoomIn detalleProducto'>Cargando...</h2>: <ItemDetail producto={producto}/>}
     </div>
   )
 }

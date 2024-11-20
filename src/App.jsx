@@ -10,7 +10,7 @@ function App() {
    <NavbarComponent/>
     <Routes>
       <Route path='/' element={<ItemListContainer greeting='Bienvenidos a la tienda de Sgto Morrison' texto='Tienda Tactica'/>}/>
-      <Route path='/productos/:categorias' element={<ItemListContainer greeting='Bienvenidos a la categoria:'/>}/>
+      <Route path='/productos/:category' element={<ItemListContainer greeting='Bienvenidos a la categoria:'/>}/>
       <Route path='/item/:id' element={<ItemDetailContainer/>}/>
     </Routes>
 

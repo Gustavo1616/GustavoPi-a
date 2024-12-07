@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import { getOneProducto } from '../mock/data'
 import ItemDetail from './ItemDetail'
 import { useParams } from 'react-router-dom'
+import Loader from './Loader'
+import { collection, doc, getDoc } from 'firebase/firestore'
+import { db } from '../service/firebase'
 
 
 const ItemDetailContainer = () => {
   const [producto, setProducto] = useState({})
   const [loading, setLoading]= useState(false)
   const {id} = useParams()
-  console.log(id)
-  useEffect (()=>{
+
+  //FIRE BASE
+
+  useEffect(()=>{
     setLoading(true)
-    getOneProducto(id)
-    .then((res)=> setProducto(res))
-    .catch((error)=>console.log(error))
+    const collectionProd = collection (db, "productos")
+    const docRef = doc(collectionProd, id)
+    getDoc(docRef)
+    .then((res)=> setProducto({id: res.id, ...res.data()}))
+    .catch((error)=> console.log(error))
     .finally(()=> setLoading(false))
   },[])
 
   return (
     <div className='contenedorDetalle'>
-      {loading ? <h2 className='animate__animated animate__zoomIn detalleProducto'>Cargando...</h2>: <ItemDetail producto={producto}/>}
+      {loading ? <Loader/> : <ItemDetail producto={producto}/>}
     </div>
   )
 }

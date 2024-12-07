@@ -1,15 +1,5 @@
-const productos= [
+export const productosDb= [
     {
-        id:'1',
-        name:'Botas tacticas',
-        stock:4,
-        price:10000,
-        description:'breve descripcion del producto',
-        img:'../public/products/botas.png',
-        category:'nuevos'
-    },
-    {
-        id:'2',
         name:'Casco',
         stock:6,
         price:15000,
@@ -18,7 +8,6 @@ const productos= [
         category:'ofertas'
     },
     {
-        id:'3',
         name:'Chaleco',
         stock:10,
         price:50000,
@@ -27,7 +16,6 @@ const productos= [
         category:'mas vendidos'
     },
     {
-        id:'4',
         name:'Cinturon',
         stock:20,
         price:8000,
@@ -36,7 +24,6 @@ const productos= [
         category:'mas vendidos'
     },
     {
-        id:'5',
         name:'Guantes',
         stock:50,
         price:5000,
@@ -45,7 +32,6 @@ const productos= [
         category:'mas vendidos'
     },
     {
-        id:'6',
         name:'Pantalon',
         stock:50,
         price:25000,
@@ -62,7 +48,7 @@ export const getProductos = () =>{
             if(error){
                 reject('Hubo un error, intente mas tarde')
             }else{
-                resolve(productos)
+                resolve(productosDb)
             }
         },2000)
     })
@@ -73,7 +59,7 @@ export const getOneProducto = (id)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
             if(!error){
-                let producto = productos.find((item)=> item.id === id)
+                let producto = productosDb.find((item)=> item.id === id)
                 resolve(producto)
             }else{
                 reject('No hay data')

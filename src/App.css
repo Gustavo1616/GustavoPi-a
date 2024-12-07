@@ -4,7 +4,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-
 .contenedorTitulo {
   display: flex;
   flex-wrap: wrap;
@@ -30,13 +29,12 @@
 }
 
 .cartIcon{
-  width:2rem;
+  width:3rem;
 }
 
-.cartCounter{
-  color:red;
-  font-size: 1rem;
-  font-weight: 500;
+.badge {
+  border-radius: 20px;
+  color: #000;
 }
 
 .card .card-image .card-title {
@@ -138,3 +136,54 @@
   text-align: center; 
 }
 
+.tituloCarrito {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.botonesProductosDetalle {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.loader {
+  width: 80px;
+  height: 80px;
+  border: 5px dotted hsl(138, 71%, 19%);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
+.carritoVacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  margin-top: 200px;
+  flex-wrap: wrap;
+}
+
+.formularioCompra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  width: 100vh;
+  justify-self: center;
+}

@@ -1,4 +1,4 @@
-import CartView from "./CartView"
+
 import CartWidget from "./CartWidget"
 import { NavLink } from "react-router-dom"
 
@@ -7,7 +7,7 @@ const NavbarComponent = () =>{
     return(
         <nav>
         <div className="nav-wrapper">
-          <NavLink href="#" className="brand-logo center" to='/'>Logo</NavLink>
+          <NavLink href="#" className="brand-logo center" to='/'>Sargento Morrison</NavLink>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><NavLink  to='productos/ofertas'>Ofertas</NavLink></li>
             <li><NavLink  to='/productos/nuevos'>Nuevos Ingresos</NavLink></li>

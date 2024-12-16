@@ -6,11 +6,11 @@ import CartList from './CartList'
 const CartView = () => {
     const {cart} = useCart()
   return (
-    <div>
+    <div >
         {!cart.length 
         ? <EmptyCart/> 
-        : <div className='tituloCarrito'>
-            <h2>Tu carrito</h2>
+        : <div >
+            <h2 className='tituloCarrito'>Tu carrito</h2>
             <CartList/>
         </div>
         }

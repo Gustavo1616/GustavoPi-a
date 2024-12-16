@@ -1,9 +1,8 @@
 import ItemList from './ItemList'
 import React, {useState, useEffect} from 'react'
-import {productosDb} from "../mock/data"
-import { useParams } from 'react-router-dom'
+import { useParams,Link} from 'react-router-dom'
 import Loader from './Loader'
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
+import {collection, getDocs, query, where } from 'firebase/firestore'
 import {db} from '../service/firebase'
 
 const ItemListContainer = ({greeting, texto}) => {
@@ -11,24 +10,25 @@ const ItemListContainer = ({greeting, texto}) => {
     const [loading, setLoading]= useState(false)
     const [invalidCategory, setInvalidCategory] = useState(false)
     const {category} = useParams()
+
+
   // FIREBASE
     useEffect(()=>{
       setLoading(true)
       const productsCollection = category ? query(collection(db, "productos"), where("category", "==", category)): collection(db, "productos")
       getDocs(productsCollection)
       .then((res)=>{
-        if(getDocs(productsCollection)){
-          const list = res.docs.map((product)=>{
-            return{
-              id: product.id,
-              ...product.data()
-            }
-          })
-          setProducts(list)
-        }else{
-          setInvalidCategory(true)
-        }})
-        
+          const list = res.docs.map((product) => ({
+            id: product.id,
+            ...product.data(),
+          }));
+          if (list.length === 0) {
+            setInvalidCategory(true);
+          } else {
+            setProducts(list);
+            setInvalidCategory(false);
+          }
+        })
       .catch((error) => console.log(error))
       .finally(()=>setLoading(false))
     },[category])
@@ -36,7 +36,8 @@ const ItemListContainer = ({greeting, texto}) => {
     if(invalidCategory){
       return <div className='noItem'>
         <img src='https://http.cat/images/404.jpg'/>
-        <Link to='/' className='btn btn-dark'> Volver a home</Link>
+        <Link to="/" className='btn btn-dark'> Volver a Home</Link>
+
       </div>
     }
 
